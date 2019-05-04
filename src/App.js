@@ -1,25 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Header } from './components';
+import PostContainer from './containers/PostContainer/PostContainer';
+import Promise from 'promise-polyfill'; 
+import { ToastContainer } from "react-toastify";
+
+if (!window.Promise) {
+  window.Promise = Promise;
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header/>
+      <PostContainer/>
+      <ToastContainer draggable={true} position={"bottom-center"}/>
+    </>
   );
 }
 
