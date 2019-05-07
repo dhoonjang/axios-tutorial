@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import { PostWrapper, Navigator, Post, Warning } from '../../components';
+import { PostWrapper, Navigator, Post } from '../../components';
 import * as service from '../../services/post';
 import { toast } from 'react-toastify';
-
 
 const PostContainer = () => {
     const [postId, setPostId] = useState(1);
@@ -16,7 +15,6 @@ const PostContainer = () => {
 
     const fetchPostInfo = async (postId) => {
         setFetching(true);
-        
         try{
             const info = await Promise.all([
                 service.getPost(postId),
@@ -36,7 +34,7 @@ const PostContainer = () => {
         } catch(e) {
             setFetching(false);
             console.log('error occurred', e);
-            toast.success("That Post not existed!");
+            toast.error("That Post not existed!");
         }
     }
 
